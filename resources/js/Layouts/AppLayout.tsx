@@ -34,10 +34,12 @@ export default function AppLayout({ title, children }: PropsWithChildren<{ title
         </div>
         <nav id="main-navigation" aria-label="Main navigation" className={`${navigationOpen ? 'flex' : 'hidden'} flex-wrap justify-center gap-1 px-3 py-3 md:flex-col md:items-stretch md:justify-center`}>
             <Link href={route('alerts')} className={link}>Alerts</Link>
+            <Link href={route('chat')} className={link}>Emergency assistant</Link>
             <Link href={route('centers')} className={link}>Evacuation centers</Link>
             <Link href={route('hotlines')} className={link}>Hotlines</Link>
             <Link href={route('guidelines')} className={link}>Safety guide</Link>
             {user ? <>
+              {user.role === 'admin' && <Link href={route('admin.analytics')} className={link}>Data analytics</Link>}
               <Link href={route('incidents.create')} className="flex items-center justify-center rounded bg-orange-700 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-orange-600">Report an incident</Link>
               <Link href={route('dashboard')} className={link}>{user.role === 'admin' ? 'Admin' : 'My account'}</Link>
               <Link href={route('logout')} method="post" as="button" className={link}>Log out</Link>

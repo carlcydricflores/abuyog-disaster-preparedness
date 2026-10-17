@@ -1,7 +1,12 @@
 <?php
+
 namespace Database\Seeders;
 
-use App\Models\{Alert, EvacuationCenter, Guideline, Hotline, User};
+use App\Models\Alert;
+use App\Models\EvacuationCenter;
+use App\Models\Guideline;
+use App\Models\Hotline;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,8 +33,8 @@ class DatabaseSeeder extends Seeder
         Hotline::firstOrCreate(['name' => 'Abuyog MDRRMO (update number)'], ['number' => '000-000-0000', 'category' => 'disaster']);
 
         foreach ([['Prepare a go-bag', 'before', 'Pack water, food, flashlight, radio, first-aid kit, medicines and copies of IDs.'],
-                  ['Drop, cover and hold on', 'during', 'In an earthquake, get under sturdy furniture and stay away from windows.'],
-                  ['Check for hazards', 'after', 'Avoid floodwater and damaged structures. Report hazards through this website.']] as [$t, $c, $b]) {
+            ['Drop, cover and hold on', 'during', 'In an earthquake, get under sturdy furniture and stay away from windows.'],
+            ['Check for hazards', 'after', 'Avoid floodwater and damaged structures. Report hazards through this website.']] as [$t, $c, $b]) {
             Guideline::firstOrCreate(['title' => $t], ['category' => $c, 'body' => $b]);
         }
     }

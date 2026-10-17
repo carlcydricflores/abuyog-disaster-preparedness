@@ -8,7 +8,7 @@ export default function Dashboard() {
   const tiles: [string, string][] = admin
     ? [[route('admin.manage.index', 'alerts'), 'Post & manage alerts'], [route('admin.manage.index', 'centers'), 'Evacuation centers'],
        [route('admin.manage.index', 'hotlines'), 'Hotlines'], [route('admin.manage.index', 'guidelines'), 'Safety guidelines'],
-       [route('admin.incidents'), 'Review incident reports'], [route('admin.reports'), 'Emergency reports']]
+       [route('admin.incidents'), 'Review incident reports'], [route('admin.reports'), 'Emergency reports'], [route('admin.analytics'), 'Data analytics']]
     : [[route('incidents.create'), 'Report an incident'], [route('incidents.index'), 'My reports'], [route('centers'), 'Find a shelter'], [route('profile.edit'), 'Profile']];
   return (
     <AppLayout title={admin ? 'Admin dashboard' : 'My account'}>

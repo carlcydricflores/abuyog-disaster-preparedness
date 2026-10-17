@@ -1,8 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Alert, EvacuationCenter, Guideline, Hotline};
+use App\Models\Alert;
+use App\Models\EvacuationCenter;
+use App\Models\Guideline;
+use App\Models\Hotline;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -49,6 +53,7 @@ class ManageController extends Controller
             ]],
         ];
         abort_unless(isset($all[$resource]), 404);
+
         return $all[$resource];
     }
 
@@ -60,19 +65,23 @@ class ManageController extends Controller
     public function index(string $resource)
     {
         $cfg = $this->config($resource);
+
         return Inertia::render('Admin/Manage', [
             'resource' => $resource,
-            'fields'   => collect($cfg['fields'])->map(fn ($f) => collect($f)->except('rule'))->all(),
-            'rows'     => $cfg['model']::latest()->paginate(15),
+            'fields' => collect($cfg['fields'])->map(fn ($f) => collect($f)->except('rule'))->all(),
+            'rows' => $cfg['model']::latest()->paginate(15),
         ]);
     }
 
     public function store(Request $r, string $resource)
     {
-        $cfg  = $this->config($resource);
+        $cfg = $this->config($resource);
         $data = $r->validate($this->rules($cfg));
-        if ($resource === 'alerts') $data['user_id'] = $r->user()->id; // record who posted it
+        if ($resource === 'alerts') {
+            $data['user_id'] = $r->user()->id;
+        } // record who posted it
         $cfg['model']::create($data);
+
         return back();
     }
 
@@ -80,12 +89,14 @@ class ManageController extends Controller
     {
         $cfg = $this->config($resource);
         $cfg['model']::findOrFail($id)->update($r->validate($this->rules($cfg)));
+
         return back();
     }
 
     public function destroy(string $resource, int $id)
     {
         $this->config($resource)['model']::findOrFail($id)->delete();
+
         return back();
     }
 }

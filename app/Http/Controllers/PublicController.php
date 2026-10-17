@@ -1,7 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Models\{Alert, EvacuationCenter, Guideline, Hotline};
+use App\Models\Alert;
+use App\Models\EvacuationCenter;
+use App\Models\Guideline;
+use App\Models\Hotline;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -11,8 +15,8 @@ class PublicController extends Controller
     public function home()
     {
         return Inertia::render('Home', [
-            'alerts'   => Alert::active()->latest()->take(3)->get(),
-            'centers'  => EvacuationCenter::where('status', 'open')->count(),
+            'alerts' => Alert::active()->latest()->take(3)->get(),
+            'centers' => EvacuationCenter::where('status', 'open')->count(),
             'hotlines' => Hotline::orderBy('category')->take(4)->get(),
         ]);
     }

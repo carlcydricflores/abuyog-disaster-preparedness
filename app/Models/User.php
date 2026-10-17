@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +13,7 @@ class User extends Authenticatable
 
     // 'role' is intentionally NOT fillable: it can't be set via mass assignment (privilege-escalation guard).
     protected $fillable = ['name', 'email', 'password'];
+
     protected $hidden = ['password', 'remember_token'];
 
     protected function casts(): array
@@ -20,7 +22,13 @@ class User extends Authenticatable
     }
 
     /** True when the user holds the admin role. */
-    public function isAdmin(): bool { return $this->role === 'admin'; }
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
 
-    public function incidents() { return $this->hasMany(Incident::class); }
+    public function incidents()
+    {
+        return $this->hasMany(Incident::class);
+    }
 }

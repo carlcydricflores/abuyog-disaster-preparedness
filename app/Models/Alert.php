@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -6,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alert extends Model
 {
     protected $fillable = ['user_id', 'title', 'type', 'severity', 'barangays', 'message', 'expires_at'];
+
     // This format drops straight into <input type="datetime-local">.
     protected $casts = ['expires_at' => 'datetime:Y-m-d\TH:i'];
 

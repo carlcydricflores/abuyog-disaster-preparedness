@@ -1,6 +1,13 @@
 <?php
-use App\Http\Controllers\Admin\{IncidentReviewController, ManageController, ReportController};
-use App\Http\Controllers\{IncidentController, ProfileController, PublicController};
+
+use App\Http\Controllers\Admin\AnalyticsController;
+use App\Http\Controllers\Admin\IncidentReviewController;
+use App\Http\Controllers\Admin\ManageController;
+use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\IncidentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicController;
 use App\Http\Middleware\EnsureAdmin;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -11,6 +18,8 @@ Route::get('/alerts', [PublicController::class, 'alerts'])->name('alerts');
 Route::get('/evacuation-centers', [PublicController::class, 'centers'])->name('centers');
 Route::get('/hotlines', [PublicController::class, 'hotlines'])->name('hotlines');
 Route::get('/safety-guidelines', [PublicController::class, 'guidelines'])->name('guidelines');
+Route::get('/assistant', [ChatController::class, 'index'])->name('chat');
+Route::post('/assistant', [ChatController::class, 'reply'])->middleware('throttle:20,1')->name('chat.reply');
 
 // Logged-in users (role: user or admin)
 Route::middleware('auth')->group(function () {
@@ -26,6 +35,7 @@ Route::middleware('auth')->group(function () {
 
 // Admin only (auth + role check)
 Route::prefix('admin')->name('admin.')->middleware(['auth', EnsureAdmin::class])->group(function () {
+    Route::get('analytics', [AnalyticsController::class, 'index'])->name('analytics');
     Route::get('manage/{resource}', [ManageController::class, 'index'])->name('manage.index');
     Route::post('manage/{resource}', [ManageController::class, 'store'])->name('manage.store');
     Route::put('manage/{resource}/{id}', [ManageController::class, 'update'])->name('manage.update');
@@ -38,4 +48,4 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', EnsureAdmin::class])
     Route::get('reports/export', [ReportController::class, 'export'])->name('reports.export');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

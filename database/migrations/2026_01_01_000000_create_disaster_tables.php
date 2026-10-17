@@ -1,9 +1,11 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         // RBAC: 'admin' or 'user'. Default is 'user' so public registration can never create admins.
@@ -68,7 +70,9 @@ return new class extends Migration {
 
     public function down(): void
     {
-        foreach (['incidents', 'guidelines', 'hotlines', 'evacuation_centers', 'alerts'] as $tbl) Schema::dropIfExists($tbl);
+        foreach (['incidents', 'guidelines', 'hotlines', 'evacuation_centers', 'alerts'] as $tbl) {
+            Schema::dropIfExists($tbl);
+        }
         Schema::table('users', fn (Blueprint $t) => $t->dropColumn('role'));
     }
 };
