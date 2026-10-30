@@ -47,27 +47,27 @@ export default function Chat() {
   return (
     <AppLayout title="Emergency assistant">
       <section className={`${card} mx-auto max-w-3xl`}>
-        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-stone-800 pb-4">
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-subtle pb-4">
           <div>
-            <h2 className="font-bold text-amber-400">Abuyog preparedness assistant</h2>
-            <p className="mt-1 text-sm leading-5 text-stone-300">Answers use the latest information listed in this system.</p>
+            <h2 className="font-bold text-brand">Abuyog preparedness assistant</h2>
+            <p className="mt-1 text-sm leading-5 text-secondary">Answers use the latest information listed in this system.</p>
           </div>
-          <a href={route('guidelines')} className="text-sm font-semibold text-orange-400 hover:text-orange-300">Safety guide</a>
+          <a href={route('guidelines')} className="text-sm font-semibold text-brand hover:text-brand">Safety guide</a>
         </div>
 
         <div aria-live="polite" aria-relevant="additions text" className="mb-5 max-h-[55vh] min-h-64 space-y-3 overflow-y-auto pr-1">
           {messages.map((item, index) => (
-            <div key={`${item.role}-${index}`} className={`max-w-[90%] whitespace-pre-line rounded-md px-4 py-3 text-sm leading-6 ${item.role === 'user' ? 'ml-auto bg-orange-800 text-white' : 'border border-stone-700 bg-stone-950 text-stone-200'}`}>
-              <p className="mb-1 text-xs font-bold uppercase text-amber-400">{item.role === 'user' ? 'You' : 'Assistant'}</p>
+            <div key={`${item.role}-${index}`} className={`max-w-[90%] whitespace-pre-line rounded-md px-4 py-3 text-sm leading-6 ${item.role === 'user' ? 'ml-auto bg-action text-action-ink' : 'border border-subtle bg-page text-primary'}`}>
+              <p className="mb-1 text-xs font-bold uppercase text-brand">{item.role === 'user' ? 'You' : 'Assistant'}</p>
               {item.text}
             </div>
           ))}
-          {sending && <p role="status" className="text-sm text-stone-300">Checking local emergency information...</p>}
+          {sending && <p role="status" className="text-sm text-secondary">Checking local emergency information...</p>}
         </div>
 
         <div className="mb-4 flex flex-wrap gap-2">
           {suggestions.map((suggestion) => (
-            <button key={suggestion} type="button" disabled={sending} onClick={() => submitMessage(suggestion)} className="rounded border border-stone-700 px-3 py-2 text-left text-xs text-stone-300 hover:border-amber-500 hover:text-amber-300 disabled:opacity-50">
+            <button key={suggestion} type="button" disabled={sending} onClick={() => submitMessage(suggestion)} className="rounded border border-subtle px-3 py-2 text-left text-xs text-secondary hover:border-brand hover:text-brand disabled:opacity-50">
               {suggestion}
             </button>
           ))}
@@ -78,7 +78,7 @@ export default function Chat() {
           <textarea id="chat-message" className={`${input} min-h-12 resize-y`} rows={2} maxLength={500} value={message} onChange={(event) => setMessage(event.target.value)} placeholder="Ask about alerts, shelters, or preparedness" />
           <button className={btn} type="submit" disabled={sending || !message.trim()}>{sending ? 'Sending...' : 'Send'}</button>
         </form>
-        <p className="mt-3 border-l-2 border-red-500 pl-3 text-sm text-red-200">For immediate danger, call 911. This assistant is not an emergency dispatch service.</p>
+        <p className="mt-3 rounded-xl border border-danger bg-surface-raised px-4 py-3 text-sm text-error">For immediate danger, call 911. This assistant is not an emergency dispatch service.</p>
       </section>
     </AppLayout>
   );

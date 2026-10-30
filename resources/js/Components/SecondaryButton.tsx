@@ -12,8 +12,8 @@ export default function SecondaryButton({
             {...props}
             type={type}
             className={
-                `inline-flex min-h-11 items-center justify-center rounded-md border border-stone-600 bg-stone-800 px-4 py-2 text-sm font-semibold text-stone-100 shadow-sm transition-colors hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-950 disabled:cursor-not-allowed disabled:opacity-50 ${
-                    disabled && 'opacity-25'
+                `inline-flex min-h-11 items-center justify-center rounded-full border border-subtle bg-surface px-5 py-2 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-surface-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-page disabled:cursor-not-allowed disabled:opacity-50 ${
+                    disabled && 'opacity-50'
                 } ` + className
             }
             disabled={disabled}

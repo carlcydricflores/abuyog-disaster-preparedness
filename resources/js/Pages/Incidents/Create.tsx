@@ -41,7 +41,7 @@ export default function Create({ types }: any) {
   const [mapState, setMapState] = useState<'loading' | 'ready' | 'missing-key' | 'error'>('loading');
   const [locationMessage, setLocationMessage] = useState('');
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-  const err = (k: string) => errors[k] && <p id={`${k}-error`} role="alert" className="mt-1 text-sm text-red-300">{errors[k]}</p>;
+  const err = (k: string) => errors[k] && <p id={`${k}-error`} role="alert" className="mt-1 text-sm text-error">{errors[k]}</p>;
 
   useEffect(() => {
     if (!apiKey) {
@@ -107,25 +107,25 @@ export default function Create({ types }: any) {
   return (
     <AppLayout title="Report an incident">
       <form onSubmit={(e) => { e.preventDefault(); post(route('incidents.store')); }} className={`${card} mx-auto max-w-xl space-y-4`}>
-        <div><label htmlFor="incident-type" className="mb-1 block text-sm font-medium text-stone-200">What happened?</label>
+        <div><label htmlFor="incident-type" className="mb-1 block text-sm font-medium text-primary">What happened?</label>
           <select id="incident-type" aria-invalid={Boolean(errors.type)} aria-describedby={errors.type ? 'type-error' : undefined} className={input} value={data.type} onChange={(e) => setData('type', e.target.value)}>{types.map((t: string) => <option key={t} value={t}>{t.replace('_', ' ')}</option>)}</select>{err('type')}</div>
-        <div><label htmlFor="incident-barangay" className="mb-1 block text-sm font-medium text-stone-200">Barangay</label><input id="incident-barangay" aria-invalid={Boolean(errors.barangay)} aria-describedby={errors.barangay ? 'barangay-error' : undefined} className={input} value={data.barangay} onChange={(e) => setData('barangay', e.target.value)} />{err('barangay')}</div>
-        <div><label htmlFor="incident-description" className="mb-1 block text-sm font-medium text-stone-200">Details</label><textarea id="incident-description" aria-invalid={Boolean(errors.description)} aria-describedby={errors.description ? 'description-error' : undefined} rows={4} className={input} value={data.description} onChange={(e) => setData('description', e.target.value)} />{err('description')}</div>
+        <div><label htmlFor="incident-barangay" className="mb-1 block text-sm font-medium text-primary">Barangay</label><input id="incident-barangay" aria-invalid={Boolean(errors.barangay)} aria-describedby={errors.barangay ? 'barangay-error' : undefined} className={input} value={data.barangay} onChange={(e) => setData('barangay', e.target.value)} />{err('barangay')}</div>
+        <div><label htmlFor="incident-description" className="mb-1 block text-sm font-medium text-primary">Details</label><textarea id="incident-description" aria-invalid={Boolean(errors.description)} aria-describedby={errors.description ? 'description-error' : undefined} rows={4} className={input} value={data.description} onChange={(e) => setData('description', e.target.value)} />{err('description')}</div>
         <div>
           <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-            <span className="block text-sm font-medium text-stone-200">Incident location <span className="font-normal text-stone-400">(optional)</span></span>
+            <span className="block text-sm font-medium text-primary">Incident location <span className="font-normal text-muted">(optional)</span></span>
             <button type="button" onClick={locate} className={btnAlt}>Use my location</button>
           </div>
-          <div ref={mapElement} role="application" aria-label="Google map location picker" className="h-72 w-full overflow-hidden rounded border border-stone-700 bg-stone-800 sm:h-96" />
-          {mapState !== 'ready' && <p className="mt-2 text-sm text-amber-300">
+          <div ref={mapElement} role="application" aria-label="Google map location picker" className="h-72 w-full overflow-hidden rounded border border-subtle bg-surface-raised sm:h-96" />
+          {mapState !== 'ready' && <p className="mt-2 text-sm text-brand">
             {mapState === 'loading' && 'Loading Google Maps...'}
             {mapState === 'missing-key' && 'Google Maps needs VITE_GOOGLE_MAPS_API_KEY configured in your local environment.'}
             {mapState === 'error' && 'Google Maps could not load. Check the API key and try again.'}
           </p>}
-          <p className="mt-2 text-sm text-stone-400">Click the map to place a pin. {locationMessage}</p>
-          {(errors.latitude || errors.longitude) && <p className="mt-1 text-sm text-red-400">{errors.latitude || errors.longitude}</p>}
+          <p className="mt-2 text-sm text-muted">Click the map to place a pin. {locationMessage}</p>
+          {(errors.latitude || errors.longitude) && <p className="mt-1 text-sm text-error">{errors.latitude || errors.longitude}</p>}
         </div>
-        <div><label htmlFor="incident-photo" className="mb-1 block text-sm font-medium text-stone-200">Photo <span className="font-normal text-stone-400">(optional, JPG or PNG, max 2 MB)</span></label><input id="incident-photo" aria-invalid={Boolean(errors.photo)} aria-describedby={errors.photo ? 'photo-error' : undefined} type="file" accept="image/png,image/jpeg" onChange={(e) => setData('photo', e.target.files?.[0] ?? null)} className="block min-h-11 w-full text-sm text-stone-300 file:mr-4 file:min-h-11 file:rounded file:border-0 file:bg-stone-800 file:px-4 file:font-semibold file:text-stone-100 hover:file:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300" />{err('photo')}</div>
+        <div><label htmlFor="incident-photo" className="mb-1 block text-sm font-medium text-primary">Photo <span className="font-normal text-muted">(optional, JPG or PNG, max 2 MB)</span></label><input id="incident-photo" aria-invalid={Boolean(errors.photo)} aria-describedby={errors.photo ? 'photo-error' : undefined} type="file" accept="image/png,image/jpeg" onChange={(e) => setData('photo', e.target.files?.[0] ?? null)} className="block min-h-11 w-full text-sm text-secondary file:mr-4 file:min-h-11 file:rounded file:border-0 file:bg-surface-raised file:px-4 file:font-semibold file:text-primary hover:file:bg-surface-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus" />{err('photo')}</div>
         <button disabled={processing} className={btn}>{processing ? 'Sending report…' : 'Send report'}</button>
       </form>
     </AppLayout>

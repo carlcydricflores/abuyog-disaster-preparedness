@@ -91,7 +91,7 @@ export default function Manage({ resource, fields, rows }: any) {
       <div className="mb-6 flex flex-wrap gap-2">
         {['alerts', 'centers', 'hotlines', 'guidelines'].map((r) => <Link key={r} href={route('admin.manage.index', r)} className={r === resource ? btn : btnAlt}>{r}</Link>)}
       </div>
-      {notice && <p role="status" className="mb-4 rounded border border-emerald-700 bg-emerald-950/50 px-4 py-3 text-sm text-emerald-200">{notice}</p>}
+      {notice && <p role="status" className="mb-4 rounded border border-success bg-success-surface px-4 py-3 text-sm text-success">{notice}</p>}
       <form onSubmit={submit} className={`${card} mb-8 grid gap-4 md:grid-cols-2`}>
         {fields.map((f: any) => {
           const fieldId = `manage-${resource}-${f.name}`;
@@ -100,7 +100,7 @@ export default function Manage({ resource, fields, rows }: any) {
           if (resource === 'centers' && f.name === 'latitude') {
             return (
               <div key="locationLink" className="md:col-span-2">
-                <label htmlFor="center-location-link" className="mb-1 block text-sm font-medium text-stone-200">Google Maps link</label>
+                <label htmlFor="center-location-link" className="mb-1 block text-sm font-medium text-primary">Google Maps link</label>
                 <div className="flex flex-col gap-2 sm:flex-row">
                   <input
                     id="center-location-link"
@@ -112,20 +112,20 @@ export default function Manage({ resource, fields, rows }: any) {
                   />
                   <button type="button" className={`${btnAlt} shrink-0`} onClick={useCurrentLocation}>Use my current location</button>
                 </div>
-                {locationMessage && <p className="mt-1 text-sm text-amber-300">{locationMessage}</p>}
-                {(errors.latitude || errors.longitude) && <p className="mt-1 text-sm text-red-400">{errors.latitude || errors.longitude}</p>}
-                {data.latitude && data.longitude && <a className="mt-2 inline-block text-sm text-amber-500 underline" href={`https://www.google.com/maps?q=${data.latitude},${data.longitude}`} target="_blank" rel="noopener noreferrer">Open selected location in Google Maps</a>}
+                {locationMessage && <p className="mt-1 text-sm text-brand">{locationMessage}</p>}
+                {(errors.latitude || errors.longitude) && <p className="mt-1 text-sm text-error">{errors.latitude || errors.longitude}</p>}
+                {data.latitude && data.longitude && <a className="mt-2 inline-block text-sm text-brand underline" href={`https://www.google.com/maps?q=${data.latitude},${data.longitude}`} target="_blank" rel="noopener noreferrer">Open selected location in Google Maps</a>}
               </div>
             );
           }
 
           return (
             <div key={f.name} className={f.type === 'textarea' ? 'md:col-span-2' : ''}>
-              <label htmlFor={fieldId} className="mb-1 block text-sm font-medium text-stone-200">{f.label}</label>
+              <label htmlFor={fieldId} className="mb-1 block text-sm font-medium text-primary">{f.label}</label>
               {f.type === 'select' ? <select id={fieldId} aria-invalid={Boolean(errors[f.name])} aria-describedby={errors[f.name] ? errorId : undefined} className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)}><option value="">Choose…</option>{f.options.map((o: string) => <option key={o}>{o}</option>)}</select>
                 : f.type === 'textarea' ? <textarea id={fieldId} aria-invalid={Boolean(errors[f.name])} aria-describedby={errors[f.name] ? errorId : undefined} rows={4} className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)} />
                 : <input id={fieldId} aria-invalid={Boolean(errors[f.name])} aria-describedby={errors[f.name] ? errorId : undefined} type={f.type} step="any" className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)} />}
-              {errors[f.name] && <p id={errorId} role="alert" className="mt-1 text-sm text-red-300">{errors[f.name]}</p>}
+              {errors[f.name] && <p id={errorId} role="alert" className="mt-1 text-sm text-error">{errors[f.name]}</p>}
             </div>
           );
         })}
@@ -137,11 +137,11 @@ export default function Manage({ resource, fields, rows }: any) {
       <div className="space-y-2">
         {rows.data.map((row: any) => (
           <div key={row.id} className={`${card} flex items-center justify-between gap-4 py-3`}>
-            <div className="min-w-0"><div className="truncate font-semibold text-amber-400">{row[fields[0].name]}</div><div className="truncate text-sm text-stone-500">{fields.slice(1, 4).map((f: any) => row[f.name]).filter(Boolean).join(' · ')}</div></div>
-            <div className="flex shrink-0 gap-3 text-sm"><button type="button" className="rounded px-2 py-2 font-semibold text-amber-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300" onClick={() => edit(row)}>Edit</button><button type="button" className="rounded px-2 py-2 font-semibold text-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300" onClick={() => remove(row.id)}>Delete</button></div>
+            <div className="min-w-0"><div className="truncate font-semibold text-brand">{row[fields[0].name]}</div><div className="truncate text-sm text-muted">{fields.slice(1, 4).map((f: any) => row[f.name]).filter(Boolean).join(' · ')}</div></div>
+            <div className="flex shrink-0 gap-3 text-sm"><button type="button" className="rounded-full px-3 py-2 font-semibold text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus" onClick={() => edit(row)}>Edit</button><button type="button" className="rounded-full px-3 py-2 font-semibold text-error focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-danger" onClick={() => remove(row.id)}>Delete</button></div>
           </div>
         ))}
-        {!rows.data.length && <p className="text-stone-500">Nothing here yet. Use the form above to add the first item.</p>}
+        {!rows.data.length && <p className="text-muted">Nothing here yet. Use the form above to add the first item.</p>}
       </div>
       <Pager links={rows.links} />
     </AppLayout>

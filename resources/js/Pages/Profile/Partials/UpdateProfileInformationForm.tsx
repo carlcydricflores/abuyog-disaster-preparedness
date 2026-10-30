@@ -32,11 +32,11 @@ export default function UpdateProfileInformation({
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-semibold text-stone-100">
+                <h2 className="text-lg font-semibold text-primary">
                     Profile Information
                 </h2>
 
-                <p className="mt-1 text-sm leading-6 text-stone-300">
+                <p className="mt-1 text-sm leading-6 text-secondary">
                     Update your account's profile information and email address.
                 </p>
             </header>
@@ -76,20 +76,20 @@ export default function UpdateProfileInformation({
 
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
-                        <p className="mt-2 text-sm text-stone-200">
+                        <p className="mt-2 text-sm text-primary">
                             Your email address is unverified.
                             <Link
                                 href={route('verification.send')}
                                 method="post"
                                 as="button"
-                                className="rounded-md text-sm text-amber-300 underline hover:text-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-stone-900"
+                                className="rounded-xl text-sm text-brand underline hover:text-brand focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2 focus:ring-offset-surface"
                             >
                                 Click here to re-send the verification email.
                             </Link>
                         </p>
 
                         {status === 'verification-link-sent' && (
-                            <div role="status" className="mt-2 text-sm font-medium text-emerald-300">
+                            <div role="status" className="mt-2 text-sm font-medium text-success">
                                 A new verification link has been sent to your
                                 email address.
                             </div>
@@ -107,7 +107,7 @@ export default function UpdateProfileInformation({
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p role="status" className="text-sm text-emerald-300">
+                        <p role="status" className="text-sm text-success">
                             Saved.
                         </p>
                     </Transition>

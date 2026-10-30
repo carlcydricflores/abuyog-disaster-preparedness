@@ -1,8 +1,5 @@
 import Logo from '@/Components/Logo';
-import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import ThemeToggle from '@/Components/ThemeToggle';
+import AppSidebar, { useSidebarCollapsed } from '@/Components/AppSidebar';
 import { Link, usePage } from '@inertiajs/react';
 import { PropsWithChildren, ReactNode, useState } from 'react';
 
@@ -11,180 +8,26 @@ export default function Authenticated({
     children,
 }: PropsWithChildren<{ header?: ReactNode }>) {
     const user = usePage().props.auth.user;
-
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
+    const [collapsed, setCollapsed] = useSidebarCollapsed();
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     return (
-        <div className="min-h-screen bg-stone-950 text-stone-100">
-            <nav className="border-b border-stone-700 bg-stone-900">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex h-16 justify-between">
-                        <div className="flex">
-                            <div className="flex shrink-0 items-center">
-                                <Link href={route('home')} aria-label="Abuyog Preparedness home" className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">
-                                    <Logo size={38} />
-                                </Link>
-                            </div>
-
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
-                                >
-                                    Dashboard
-                                </NavLink>
-                            </div>
-                        </div>
-
-                        <div className="hidden sm:ms-6 sm:flex sm:items-center">
-                            <div className="relative ms-3">
-                                <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <span className="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                className="inline-flex min-h-11 items-center rounded-md border border-transparent px-3 py-2 text-sm font-medium text-stone-200 transition-colors hover:bg-stone-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
-                                            >
-                                                {user.name}
-
-                                                <svg
-                                                    className="-me-0.5 ms-2 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </Dropdown.Trigger>
-
-                                    <Dropdown.Content>
-                                        <Dropdown.Link
-                                            href={route('profile.edit')}
-                                        >
-                                            Profile
-                                        </Dropdown.Link>
-                                        <Dropdown.Link
-                                            href={route('logout')}
-                                            method="post"
-                                            as="button"
-                                        >
-                                            Log Out
-                                        </Dropdown.Link>
-                                    </Dropdown.Content>
-                                </Dropdown>
-                            </div>
-                        </div>
-
-                        <div className="-me-2 flex items-center sm:hidden">
-                            <button
-                                type="button"
-                                aria-controls="profile-mobile-navigation"
-                                aria-expanded={showingNavigationDropdown}
-                                aria-label={showingNavigationDropdown ? 'Close navigation menu' : 'Open navigation menu'}
-                                onClick={() =>
-                                    setShowingNavigationDropdown(
-                                        (previousState) => !previousState,
-                                    )
-                                }
-                                className="inline-flex size-11 items-center justify-center rounded-md p-2 text-stone-300 transition-colors hover:bg-stone-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
-                            >
-                                <svg
-                                    className="h-6 w-6"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        className={
-                                            !showingNavigationDropdown
-                                                ? 'inline-flex'
-                                                : 'hidden'
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        className={
-                                            showingNavigationDropdown
-                                                ? 'inline-flex'
-                                                : 'hidden'
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    id="profile-mobile-navigation"
-                    className={
-                        (showingNavigationDropdown ? 'block' : 'hidden') +
-                        ' sm:hidden'
-                    }
-                >
-                    <div className="space-y-1 pb-3 pt-2">
-                        <ResponsiveNavLink
-                            href={route('dashboard')}
-                            active={route().current('dashboard')}
-                        >
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
-                    <div className="border-t border-stone-700 pb-1 pt-4">
-                        <div className="px-4">
-                            <div className="text-base font-medium text-stone-100">
-                                {user.name}
-                            </div>
-                            <div className="text-sm font-medium text-stone-400">
-                                {user.email}
-                            </div>
-                        </div>
-
-                        <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route('profile.edit')}>
-                                Profile
-                            </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                method="post"
-                                href={route('logout')}
-                                as="button"
-                            >
-                                Log Out
-                            </ResponsiveNavLink>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            {header && (
-                <header className="border-b border-stone-800 bg-stone-900">
-                    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        {header}
-                    </div>
-                </header>
-            )}
-
-            <main>
-                <div className="flex justify-end px-4 pt-5 sm:px-6 lg:px-8">
-                    <ThemeToggle />
-                </div>
-                {children}
+        <div className="min-h-screen bg-page text-primary">
+            <a href="#main-content" className="sr-only fixed left-4 top-4 z-[60] rounded-xl bg-action px-4 py-3 font-bold text-action-ink focus:not-sr-only focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">Skip to content</a>
+            <AppSidebar user={user} collapsed={collapsed} onToggleCollapsed={() => setCollapsed((value) => !value)} mobileOpen={mobileOpen} onCloseMobile={() => setMobileOpen(false)} />
+            <header className="glass-surface sticky top-2 z-20 mx-3 mt-2 flex min-h-14 items-center justify-between gap-3 rounded-2xl px-3 lg:hidden">
+                <button type="button" aria-controls="mobile-site-navigation" aria-expanded={mobileOpen} aria-label="Open navigation menu" onClick={() => setMobileOpen(true)} className="flex size-10 items-center justify-center rounded-full text-secondary hover:bg-surface-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
+                    <svg aria-hidden="true" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+                <Link href={route('home')} aria-label="Abuyog Preparedness home" className="flex items-center gap-2 rounded-xl text-sm font-bold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"><Logo size={30} showText={false} /><span>Abuyog Preparedness</span></Link>
+                <span className="size-10" aria-hidden="true" />
+            </header>
+            <div className={`min-h-screen transition-[margin] duration-200 ${collapsed ? 'lg:ml-[6.5rem]' : 'lg:ml-[18rem]'}`}>
+            <main id="main-content">
+                {header && <header className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">{header}</header>}
+                <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">{children}</div>
             </main>
+            </div>
         </div>
     );
 }
