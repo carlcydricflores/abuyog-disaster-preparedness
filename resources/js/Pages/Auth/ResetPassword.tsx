@@ -46,7 +46,7 @@ export default function ResetPassword({
                         onChange={(e) => setData('email', e.target.value)}
                     />
 
-                    <InputError message={errors.email} className="mt-2" />
+                        <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
@@ -73,6 +73,7 @@ export default function ResetPassword({
                     />
 
                     <TextInput
+                        id="password_confirmation"
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}

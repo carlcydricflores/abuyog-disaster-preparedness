@@ -1,10 +1,10 @@
 import { Link } from '@inertiajs/react';
 
-// Shared Tailwind class tokens: dark yellow (amber) + dark orange on warm charcoal.
-export const card = 'rounded-lg border border-amber-700/40 bg-stone-900 p-5';
-export const btn = 'inline-block rounded-md bg-orange-700 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-600 disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400';
-export const btnAlt = 'inline-block rounded-md border border-amber-600 px-4 py-2 text-sm font-semibold text-amber-500 hover:bg-amber-600/10';
-export const input = 'w-full rounded-md border border-stone-700 bg-stone-950 px-3 py-2 text-stone-100 placeholder-stone-500 focus:border-amber-500 focus:ring-amber-500';
+// Shared Tailwind class tokens: charcoal surfaces with amber and orange actions.
+export const card = 'rounded-lg border border-stone-700 bg-stone-900 p-4 sm:p-5';
+export const btn = 'inline-flex min-h-11 items-center justify-center rounded-md bg-orange-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-950';
+export const btnAlt = 'inline-flex min-h-11 items-center justify-center rounded-md border border-amber-500 px-4 py-2 text-sm font-semibold text-amber-300 transition-colors hover:bg-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-950';
+export const input = 'w-full rounded-md border border-stone-600 bg-stone-950 px-3 py-2.5 text-stone-100 placeholder-stone-400 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/60';
 
 export const severityStyle: Record<string, string> = {
   advisory: 'bg-yellow-700 text-white',
@@ -31,12 +31,20 @@ export function Pager({ links }: { links: any[] }) {
 }
 
 export function AlertCard({ a }: { a: any }) {
+  const severity = String(a.severity).replace('_', ' ');
+
   return (
-    <article className={card}>
-      <div className="mb-2 flex items-center gap-2"><Badge text={a.severity} cls={severityStyle[a.severity]} /><Badge text={a.type} /></div>
-      <h3 className="text-lg font-bold text-amber-400">{a.title}</h3>
-      <p className="mt-1 whitespace-pre-line text-stone-300">{a.message}</p>
-      {a.barangays && <p className="mt-2 text-sm text-stone-500">Affected: {a.barangays}</p>}
+    <article className={`${card} border-l-4 ${a.severity === 'critical' ? 'border-l-red-500' : a.severity === 'warning' ? 'border-l-orange-500' : 'border-l-amber-400'}`}>
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        <span aria-label={`Alert severity: ${severity}`} className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-bold uppercase ${severityStyle[a.severity] ?? 'bg-stone-700 text-white'}`}>
+          <span aria-hidden="true">{a.severity === 'critical' || a.severity === 'warning' ? '!' : 'i'}</span>
+          {severity}
+        </span>
+        <Badge text={a.type} />
+      </div>
+      <h3 className="text-lg font-bold text-amber-300">{a.title}</h3>
+      <p className="mt-2 whitespace-pre-line leading-6 text-stone-200">{a.message}</p>
+      {a.barangays && <p className="mt-3 border-t border-stone-700 pt-3 text-sm text-stone-300"><span className="font-semibold text-stone-100">Affected areas:</span> {a.barangays}</p>}
     </article>
   );
 }

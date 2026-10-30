@@ -12,8 +12,8 @@ export default function Dashboard() {
     : [[route('incidents.create'), 'Report an incident'], [route('incidents.index'), 'My reports'], [route('centers'), 'Find a shelter'], [route('profile.edit'), 'Profile']];
   return (
     <AppLayout title={admin ? 'Admin dashboard' : 'My account'}>
-      <p className="mb-6 text-stone-400">Signed in as {auth.user.name}.</p>
-      <div className="grid gap-4 md:grid-cols-3">{tiles.map(([href, label]) => <Link key={href} href={href} className={`${card} font-bold text-amber-400 hover:border-orange-600`}>{label}</Link>)}</div>
+      <p className="mb-6 text-stone-300">Signed in as <span className="font-semibold text-stone-100">{auth.user.name}</span>.</p>
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{tiles.map(([href, label]) => <Link key={href} href={href} className={`${card} group min-h-24 transition-colors hover:border-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300`}><span className="flex items-center justify-between gap-4 font-semibold text-stone-100"><span>{label}</span><span aria-hidden="true" className="text-lg text-amber-300 transition-transform group-hover:translate-x-1">→</span></span></Link>)}</div>
     </AppLayout>
   );
 }

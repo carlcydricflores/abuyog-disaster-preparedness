@@ -50,19 +50,19 @@ export default function Chat() {
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-stone-800 pb-4">
           <div>
             <h2 className="font-bold text-amber-400">Abuyog preparedness assistant</h2>
-            <p className="mt-1 text-sm text-stone-400">Answers use the latest information listed in this system.</p>
+            <p className="mt-1 text-sm leading-5 text-stone-300">Answers use the latest information listed in this system.</p>
           </div>
           <a href={route('guidelines')} className="text-sm font-semibold text-orange-400 hover:text-orange-300">Safety guide</a>
         </div>
 
-        <div aria-live="polite" className="mb-5 max-h-[55vh] min-h-64 space-y-3 overflow-y-auto pr-1">
+        <div aria-live="polite" aria-relevant="additions text" className="mb-5 max-h-[55vh] min-h-64 space-y-3 overflow-y-auto pr-1">
           {messages.map((item, index) => (
             <div key={`${item.role}-${index}`} className={`max-w-[90%] whitespace-pre-line rounded-md px-4 py-3 text-sm leading-6 ${item.role === 'user' ? 'ml-auto bg-orange-800 text-white' : 'border border-stone-700 bg-stone-950 text-stone-200'}`}>
               <p className="mb-1 text-xs font-bold uppercase text-amber-400">{item.role === 'user' ? 'You' : 'Assistant'}</p>
               {item.text}
             </div>
           ))}
-          {sending && <p className="text-sm text-stone-500">Checking local emergency information...</p>}
+          {sending && <p role="status" className="text-sm text-stone-300">Checking local emergency information...</p>}
         </div>
 
         <div className="mb-4 flex flex-wrap gap-2">
@@ -78,7 +78,7 @@ export default function Chat() {
           <textarea id="chat-message" className={`${input} min-h-12 resize-y`} rows={2} maxLength={500} value={message} onChange={(event) => setMessage(event.target.value)} placeholder="Ask about alerts, shelters, or preparedness" />
           <button className={btn} type="submit" disabled={sending || !message.trim()}>{sending ? 'Sending...' : 'Send'}</button>
         </form>
-        <p className="mt-3 text-xs text-red-300">For immediate danger, call 911. This assistant is not an emergency dispatch service.</p>
+        <p className="mt-3 border-l-2 border-red-500 pl-3 text-sm text-red-200">For immediate danger, call 911. This assistant is not an emergency dispatch service.</p>
       </section>
     </AppLayout>
   );

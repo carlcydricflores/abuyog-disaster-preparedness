@@ -36,10 +36,11 @@ export default function Manage({ resource, fields, rows }: any) {
   const { data, setData, post, put, reset, errors, processing, clearErrors } = useForm<any>(blank);
   const [editId, setEditId] = useState<number | null>(null);
   const [locationMessage, setLocationMessage] = useState('');
+  const [notice, setNotice] = useState('');
 
   const submit = (e: any) => {
     e.preventDefault();
-    const opts = { preserveScroll: true, onSuccess: () => { reset(); setEditId(null); } };
+    const opts = { preserveScroll: true, onSuccess: () => { reset(); setEditId(null); setNotice(editId ? 'Changes saved.' : 'Item added.'); } };
     editId ? put(route('admin.manage.update', [resource, editId]), opts) : post(route('admin.manage.store', resource), opts);
   };
   const edit = (row: any) => {
@@ -52,7 +53,7 @@ export default function Manage({ resource, fields, rows }: any) {
     setData(rowData);
     setLocationMessage('');
   };
-  const remove = (id: number) => confirm('Delete this item?') && router.delete(route('admin.manage.destroy', [resource, id]), { preserveScroll: true });
+  const remove = (id: number) => confirm('Delete this item?') && router.delete(route('admin.manage.destroy', [resource, id]), { preserveScroll: true, onSuccess: () => setNotice('Item deleted.') });
 
   const updateLocationLink = (mapLink: string) => {
     const coordinates = parseGoogleMapsCoordinates(mapLink);
@@ -90,15 +91,19 @@ export default function Manage({ resource, fields, rows }: any) {
       <div className="mb-6 flex flex-wrap gap-2">
         {['alerts', 'centers', 'hotlines', 'guidelines'].map((r) => <Link key={r} href={route('admin.manage.index', r)} className={r === resource ? btn : btnAlt}>{r}</Link>)}
       </div>
+      {notice && <p role="status" className="mb-4 rounded border border-emerald-700 bg-emerald-950/50 px-4 py-3 text-sm text-emerald-200">{notice}</p>}
       <form onSubmit={submit} className={`${card} mb-8 grid gap-4 md:grid-cols-2`}>
         {fields.map((f: any) => {
+          const fieldId = `manage-${resource}-${f.name}`;
+          const errorId = `${fieldId}-error`;
           if (resource === 'centers' && f.name === 'longitude') return null;
           if (resource === 'centers' && f.name === 'latitude') {
             return (
               <div key="locationLink" className="md:col-span-2">
-                <label className="mb-1 block text-sm text-stone-300">Google Maps link</label>
+                <label htmlFor="center-location-link" className="mb-1 block text-sm font-medium text-stone-200">Google Maps link</label>
                 <div className="flex flex-col gap-2 sm:flex-row">
                   <input
+                    id="center-location-link"
                     type="url"
                     className={input}
                     placeholder="Paste a Google Maps link with a dropped pin"
@@ -116,11 +121,11 @@ export default function Manage({ resource, fields, rows }: any) {
 
           return (
             <div key={f.name} className={f.type === 'textarea' ? 'md:col-span-2' : ''}>
-              <label className="mb-1 block text-sm text-stone-300">{f.label}</label>
-              {f.type === 'select' ? <select className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)}><option value="">Choose…</option>{f.options.map((o: string) => <option key={o}>{o}</option>)}</select>
-                : f.type === 'textarea' ? <textarea rows={4} className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)} />
-                : <input type={f.type} step="any" className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)} />}
-              {errors[f.name] && <p className="mt-1 text-sm text-red-400">{errors[f.name]}</p>}
+              <label htmlFor={fieldId} className="mb-1 block text-sm font-medium text-stone-200">{f.label}</label>
+              {f.type === 'select' ? <select id={fieldId} aria-invalid={Boolean(errors[f.name])} aria-describedby={errors[f.name] ? errorId : undefined} className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)}><option value="">Choose…</option>{f.options.map((o: string) => <option key={o}>{o}</option>)}</select>
+                : f.type === 'textarea' ? <textarea id={fieldId} aria-invalid={Boolean(errors[f.name])} aria-describedby={errors[f.name] ? errorId : undefined} rows={4} className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)} />
+                : <input id={fieldId} aria-invalid={Boolean(errors[f.name])} aria-describedby={errors[f.name] ? errorId : undefined} type={f.type} step="any" className={input} value={data[f.name]} onChange={(e) => setData(f.name, e.target.value)} />}
+              {errors[f.name] && <p id={errorId} role="alert" className="mt-1 text-sm text-red-300">{errors[f.name]}</p>}
             </div>
           );
         })}
@@ -133,7 +138,7 @@ export default function Manage({ resource, fields, rows }: any) {
         {rows.data.map((row: any) => (
           <div key={row.id} className={`${card} flex items-center justify-between gap-4 py-3`}>
             <div className="min-w-0"><div className="truncate font-semibold text-amber-400">{row[fields[0].name]}</div><div className="truncate text-sm text-stone-500">{fields.slice(1, 4).map((f: any) => row[f.name]).filter(Boolean).join(' · ')}</div></div>
-            <div className="flex shrink-0 gap-3 text-sm"><button className="text-amber-500" onClick={() => edit(row)}>Edit</button><button className="text-red-400" onClick={() => remove(row.id)}>Delete</button></div>
+            <div className="flex shrink-0 gap-3 text-sm"><button type="button" className="rounded px-2 py-2 font-semibold text-amber-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300" onClick={() => edit(row)}>Edit</button><button type="button" className="rounded px-2 py-2 font-semibold text-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300" onClick={() => remove(row.id)}>Delete</button></div>
           </div>
         ))}
         {!rows.data.length && <p className="text-stone-500">Nothing here yet. Use the form above to add the first item.</p>}

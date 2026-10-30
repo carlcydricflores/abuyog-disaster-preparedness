@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Preparedness supplies</title>
+  <desc id="desc">A go-bag, first-aid kit, flashlight, radio, and home prepared for emergencies.</desc>
+  <rect width="1600" height="900" fill="#1c1917"/>
+  <path d="M760 735h840v165H760z" fill="#292524"/>
+  <path d="m1025 384 188-132 188 132v236h-376z" fill="#44403c" stroke="#a8a29e" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M1168 620V455h92v165" fill="#1c1917" stroke="#d6d3d1" stroke-width="10"/>
+  <path d="M1005 390h414" stroke="#f59e0b" stroke-width="14" stroke-linecap="round"/>
+  <path d="M1055 349v-67h120v67" fill="none" stroke="#d6d3d1" stroke-width="10" stroke-linejoin="round"/>
+  <g transform="translate(710 514)">
+    <path d="M30 82h218l26 200H4z" fill="#b45309" stroke="#fbbf24" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M82 82V50c0-34 27-61 61-61s61 27 61 61v32" fill="none" stroke="#fbbf24" stroke-width="14" stroke-linecap="round"/>
+    <path d="M136 126v88m-44-44h88" stroke="#fff7ed" stroke-width="18" stroke-linecap="round"/>
+    <path d="M26 252h226" stroke="#78350f" stroke-width="12"/>
+  </g>
+  <g transform="translate(980 638)">
+    <rect width="194" height="120" rx="12" fill="#166534" stroke="#86efac" stroke-width="10"/>
+    <path d="M30 35h48v48H30z" fill="#dcfce7"/>
+    <path d="M105 36h58m-58 24h58m-58 24h40" stroke="#dcfce7" stroke-width="9" stroke-linecap="round"/>
+    <path d="M20 120v18m154-18v18" stroke="#86efac" stroke-width="12"/>
+  </g>
+  <g transform="translate(1370 590)">
+    <rect width="148" height="112" rx="10" fill="#1d4ed8" stroke="#93c5fd" stroke-width="10"/>
+    <path d="M29 27h42v40H29z" fill="#dbeafe"/>
+    <circle cx="111" cy="48" r="17" fill="none" stroke="#dbeafe" stroke-width="8"/>
+    <path d="M29 86h90" stroke="#dbeafe" stroke-width="8" stroke-linecap="round"/>
+    <path d="M55 0 84-52" stroke="#93c5fd" stroke-width="9" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(835 250)">
+    <rect width="88" height="188" rx="14" fill="#57534e" stroke="#d6d3d1" stroke-width="10" transform="rotate(18 44 94)"/>
+    <path d="m38 43 26-8-8 45 22-7-41 74 9-50-21 7z" fill="#fbbf24"/>
+  </g>
+  <path d="M1470 760h90" stroke="#f59e0b" stroke-width="12" stroke-linecap="round"/>
+  <path d="M0 812h1600" stroke="#57534e" stroke-width="8"/>
+</svg>

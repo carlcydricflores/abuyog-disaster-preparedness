@@ -4,8 +4,8 @@ import { card } from '@/Components/ui';
 function Metric({ label, value, accent = 'text-amber-400' }: { label: string; value: number; accent?: string }) {
   return (
     <div className={card}>
-      <p className="text-sm text-stone-400">{label}</p>
-      <p className={`mt-2 text-3xl font-black ${accent}`}>{value.toLocaleString()}</p>
+      <p className="text-sm text-stone-300">{label}</p>
+      <p className={`mt-2 text-3xl font-bold tabular-nums ${accent}`}>{value.toLocaleString()}</p>
     </div>
   );
 }
@@ -20,8 +20,8 @@ function Breakdown({ title, rows }: { title: string; rows: { label: string | nul
         {rows.map((row) => (
           <div key={row.label ?? 'unknown'}>
             <div className="mb-1 flex justify-between gap-3 text-sm">
-              <span className="capitalize text-stone-300">{(row.label ?? 'Unknown').replaceAll('_', ' ')}</span>
-              <span className="font-semibold text-stone-100">{row.total}</span>
+              <span className="capitalize text-stone-200">{(row.label ?? 'Unknown').replaceAll('_', ' ')}</span>
+              <span className="font-semibold tabular-nums text-stone-100">{row.total}</span>
             </div>
             <div className="h-2 overflow-hidden rounded bg-stone-800">
               <div className="h-full rounded bg-orange-600" style={{ width: `${(Number(row.total) / maximum) * 100}%` }} />
@@ -38,7 +38,7 @@ export default function Analytics({ totalIncidents, activeAlerts, registeredResi
 
   return (
     <AppLayout title="Data analytics">
-      <p className="mb-5 text-sm text-stone-400">Incident activity over the last 30 days and current community readiness.</p>
+      <p className="mb-5 max-w-3xl text-sm leading-6 text-stone-300">Incident activity over the last 30 days and current community readiness, based on information entered in this system.</p>
 
       <div className="mb-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <Metric label="Incident reports" value={totalIncidents} />
@@ -51,9 +51,9 @@ export default function Analytics({ totalIncidents, activeAlerts, registeredResi
         <div className="mb-5 flex flex-wrap items-end justify-between gap-2">
           <div>
             <h2 className="font-bold text-orange-400">Daily incident reports</h2>
-            <p className="mt-1 text-sm text-stone-500">Last 30 days</p>
+            <p className="mt-1 text-sm text-stone-400">Last 30 days</p>
           </div>
-          <p className="text-sm text-stone-400">{centerSummary.availableSpaces.toLocaleString()} open spaces listed</p>
+          <p className="text-sm text-stone-300">{centerSummary.availableSpaces.toLocaleString()} open spaces listed</p>
         </div>
         <div role="img" aria-label="Bar chart of daily incident reports for the last 30 days" className="flex h-44 items-end gap-1 border-b border-stone-700 pb-1">
           {dailyTrend.map((day: any, index: number) => (
