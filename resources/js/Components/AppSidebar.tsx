@@ -158,7 +158,7 @@ function SidebarItems({ user, collapsed, onNavigate, navigationId }: { user: any
         )}
       </nav>
       <div className={`flex items-center border-t border-subtle px-3 py-4 ${collapsed ? 'justify-center' : 'justify-start'}`}>
-        <ThemeToggle compact={collapsed} />
+        <ThemeToggle />
       </div>
     </>
   );
@@ -198,7 +198,7 @@ export default function AppSidebar({
       <aside
         id="app-sidebar"
         aria-label="Site navigation"
-        className={`glass-surface fixed inset-y-3 left-3 z-30 hidden flex-col overflow-hidden rounded-3xl lg:flex ${collapsed ? 'w-[4.75rem]' : 'w-[17rem]'} transition-[width] duration-200`}
+        className={`glass-surface fixed inset-y-3 left-3 z-30 hidden flex-col overflow-visible rounded-3xl lg:flex ${collapsed ? 'w-[4.75rem]' : 'w-[17rem]'} transition-[width] duration-200`}
       >
         <div className={`flex items-center border-b border-subtle ${collapsed ? 'min-h-28 flex-col justify-center gap-1 px-2' : 'min-h-[4.5rem] justify-between gap-2 px-3'}`}>
           <Link href={route('home')} aria-label="Abuyog Preparedness home" className="flex min-w-0 items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus" onClick={onCloseMobile}>

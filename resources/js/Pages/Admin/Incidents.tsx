@@ -1,5 +1,6 @@
 import { router } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
+import IncidentMedia from '@/Components/IncidentMedia';
 import { Badge, Pager, card, input } from '@/Components/ui';
 
 export default function Incidents({ incidents, statuses, filters }: any) {
@@ -15,7 +16,7 @@ export default function Incidents({ incidents, statuses, filters }: any) {
           <article key={i.id} className={card}>
             <div className="mb-2 flex flex-wrap items-center gap-2"><Badge text={i.type} /><span className="text-sm text-secondary">{i.barangay} · by {i.user.name} · {new Date(i.created_at).toLocaleString()}</span></div>
             <p className="leading-6 text-primary">{i.description}</p>
-            {i.photo_path && <a className="text-sm text-brand underline" target="_blank" rel="noopener noreferrer" href={`/storage/${i.photo_path}`}>View photo</a>}
+            <IncidentMedia photoUrl={i.photo_path ? route('incidents.photo', i.id) : null} type={i.type} barangay={i.barangay} />
             <div className="mt-3 flex flex-wrap gap-2">
               <label className="sr-only" htmlFor={`review-status-${i.id}`}>Status for report {i.id}</label>
               <select id={`review-status-${i.id}`} className={`${input} max-w-[12rem]`} value={i.status} onChange={(e) => update(i.id, { status: e.target.value, admin_notes: i.admin_notes })}>{statuses.map((s: string) => <option key={s} value={s}>{s.replace('_', ' ')}</option>)}</select>

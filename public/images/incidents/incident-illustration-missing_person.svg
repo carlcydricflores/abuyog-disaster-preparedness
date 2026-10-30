@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Missing person illustration</title>
+  <desc id="desc">A neutral person symbol beside a search magnifier.</desc>
+  <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
+  <circle cx="256" cy="144" r="58" fill="#9ccbff" stroke="#155e9a" stroke-width="12"/>
+  <path d="M146 342c7-79 47-120 110-120s103 41 110 120" fill="#fff" stroke="#155e9a" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="418" cy="228" r="78" fill="#dceeff" stroke="#123a5c" stroke-width="14"/>
+  <path d="m474 284 71 71" stroke="#123a5c" stroke-width="20" stroke-linecap="round"/>
+  <path d="M405 201c12-21 45-15 45 9 0 18-27 21-27 42m0 22h.01" fill="none" stroke="#155e9a" stroke-width="12" stroke-linecap="round"/>
+</svg>

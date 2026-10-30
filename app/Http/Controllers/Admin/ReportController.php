@@ -30,6 +30,7 @@ class ReportController extends Controller
 
         return Inertia::render('Admin/Reports', [
             'total' => $this->query($r)->count(),
+            'reports' => $this->query($r)->with('user:id,name')->latest()->paginate(15)->withQueryString(),
             'byStatus' => $group('status'),
             'byType' => $group('type'),
             'byBarangay' => $group('barangay'),

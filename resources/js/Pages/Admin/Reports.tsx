@@ -1,7 +1,8 @@
 import { router } from '@inertiajs/react';
 import { useState } from 'react';
 import AppLayout from '@/Layouts/AppLayout';
-import { btn, btnAlt, card, input } from '@/Components/ui';
+import IncidentMedia from '@/Components/IncidentMedia';
+import { Badge, Pager, btn, btnAlt, card, input } from '@/Components/ui';
 
 const Table = ({ title, rows }: any) => (
   <section className={card}><h3 className="mb-3 font-semibold text-primary">{title}</h3>
@@ -10,7 +11,7 @@ const Table = ({ title, rows }: any) => (
   </section>
 );
 
-export default function Reports({ total, alerts, byStatus, byType, byBarangay, filters }: any) {
+export default function Reports({ total, alerts, byStatus, byType, byBarangay, reports, filters }: any) {
   const [f, setF] = useState({ from: filters.from ?? '', to: filters.to ?? '' });
   const qs = new URLSearchParams(Object.entries(f).filter(([, v]) => v) as any).toString();
   return (
@@ -27,6 +28,24 @@ export default function Reports({ total, alerts, byStatus, byType, byBarangay, f
         <div className={card}><div className="text-sm text-secondary">Alerts issued</div><div className="mt-2 text-3xl font-bold tabular-nums text-brand">{alerts}</div></div>
       </div>
       <div className="grid gap-4 md:grid-cols-3"><Table title="By status" rows={byStatus} /><Table title="By type" rows={byType} /><Table title="By barangay" rows={byBarangay} /></div>
+      <section className="mt-8">
+        <h2 className="mb-4 text-xl font-bold text-primary">Incident reports</h2>
+        <div className="grid gap-4">
+          {reports.data.map((incident: any) => (
+            <article key={incident.id} className={card}>
+              <div className="mb-2 flex flex-wrap items-center gap-2">
+                <Badge text={incident.type} />
+                <Badge text={incident.status} cls="status-watch" />
+                <span className="text-sm text-secondary">Filed by <strong className="text-primary">{incident.user.name}</strong> in {incident.barangay} on {new Date(incident.created_at).toLocaleString()}</span>
+              </div>
+              <p className="leading-6 text-primary">{incident.description}</p>
+              <IncidentMedia photoUrl={incident.photo_path ? route('incidents.photo', incident.id) : null} type={incident.type} barangay={incident.barangay} />
+            </article>
+          ))}
+          {!reports.data.length && <p className={`${card} text-secondary`}>No incident reports match these filters.</p>}
+        </div>
+        <Pager links={reports.links} />
+      </section>
     </AppLayout>
   );
 }

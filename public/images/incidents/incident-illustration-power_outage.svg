@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Power outage illustration</title>
+  <desc id="desc">A utility pole and power lines with a lightning outage symbol.</desc>
+  <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
+  <path d="M156 138h328m-302 0-48 70m322-70 48 70M320 138v224" fill="none" stroke="#123a5c" stroke-width="14" stroke-linecap="round"/>
+  <path d="M278 362h84m-68-270h52m-86 46h120" stroke="#155e9a" stroke-width="12" stroke-linecap="round"/>
+  <path d="m370 188-58 72h42l-24 71 74-93h-45z" fill="#9ccbff" stroke="#123a5c" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M56 138h98m330 0h100" stroke="#155e9a" stroke-width="10" stroke-linecap="round"/>
+</svg>

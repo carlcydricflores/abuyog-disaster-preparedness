@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Blocked road illustration</title>
+  <desc id="desc">A road closed by a striped barrier and scattered debris.</desc>
+  <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
+  <path d="M184 420 252 58h136l68 362" fill="#dceeff" stroke="#155e9a" stroke-width="12"/>
+  <path d="M320 92v56m0 46v56m0 46v42" stroke="#123a5c" stroke-width="12" stroke-linecap="round"/>
+  <path d="M130 213h380" stroke="#123a5c" stroke-width="22" stroke-linecap="round"/>
+  <path d="m170 213 28-20 28 20-28 20zm92 0 28-20 28 20-28 20zm92 0 28-20 28 20-28 20z" fill="#9ccbff"/>
+  <path d="M167 234v86m306-86v86" stroke="#155e9a" stroke-width="16" stroke-linecap="round"/>
+  <path d="m68 346 55-32 44 31-53 37zm366-3 49-41 75 37-41 30z" fill="#9ccbff" stroke="#155e9a" stroke-width="8" stroke-linejoin="round"/>
+</svg>

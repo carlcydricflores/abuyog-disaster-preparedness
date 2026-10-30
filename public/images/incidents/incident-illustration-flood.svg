@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Flood illustration</title>
+  <desc id="desc">A house beside rising water marked by a flood gauge.</desc>
+  <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
+  <path d="M0 284c72-24 122 24 198 0s128 24 208 0 151 20 234-2v138H0z" fill="#9ccbff"/>
+  <path d="m112 218 112-88 112 88v118H112z" fill="#fff" stroke="#155e9a" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M92 222 224 118l132 104" fill="none" stroke="#123a5c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M199 336v-74h52v74" fill="#dceeff" stroke="#155e9a" stroke-width="9"/>
+  <path d="M450 165v170m-18-132h18m-18 40h18m-18 40h18" fill="none" stroke="#123a5c" stroke-width="10" stroke-linecap="round"/>
+  <path d="M392 336h116" stroke="#155e9a" stroke-width="12" stroke-linecap="round"/>
+</svg>

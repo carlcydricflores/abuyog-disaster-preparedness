@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Landslide illustration</title>
+  <desc id="desc">A hillside with displaced earth and a blocked roadway.</desc>
+  <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
+  <path d="M0 256 176 92l118 102 104-86 242 148v164H0z" fill="#9ccbff"/>
+  <path d="m0 282 176-164 94 82-90 114 66 106H0z" fill="#155e9a"/>
+  <path d="m197 222 68-22 61 39-41 31 56 34-65 30-58-42-66 16 28-45-49-25z" fill="#dceeff" stroke="#123a5c" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M344 346h296" stroke="#123a5c" stroke-width="30"/>
+  <path d="M414 318v58m82-58v58m-102-36h122" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+</svg>

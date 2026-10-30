@@ -34,7 +34,7 @@ class IncidentController extends Controller
 
         // store() generates a random filename, so user-supplied names never touch the disk.
         if ($r->hasFile('photo')) {
-            $data['photo_path'] = $r->file('photo')->store('incidents', 'public');
+            $data['photo_path'] = $r->file('photo')->store('incidents', 'local');
         }
         unset($data['photo']);
 

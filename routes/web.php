@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ManageController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\IncidentController;
+use App\Http\Controllers\IncidentPhotoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Http\Middleware\EnsureAdmin;
@@ -26,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
     Route::get('/incidents', [IncidentController::class, 'index'])->name('incidents.index');
     Route::get('/incidents/create', [IncidentController::class, 'create'])->name('incidents.create');
+    Route::get('/incidents/{incident}/photo', [IncidentPhotoController::class, 'show'])->name('incidents.photo');
     Route::post('/incidents', [IncidentController::class, 'store'])->middleware('throttle:10,1')->name('incidents.store'); // 10/min
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

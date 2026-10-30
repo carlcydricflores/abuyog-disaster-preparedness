@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Medical emergency illustration</title>
+  <desc id="desc">A first-aid case with a prominent medical cross.</desc>
+  <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
+  <rect x="142" y="152" width="356" height="204" rx="28" fill="#fff" stroke="#155e9a" stroke-width="14"/>
+  <path d="M238 152v-28c0-23 19-42 42-42h80c23 0 42 19 42 42v28" fill="none" stroke="#123a5c" stroke-width="14"/>
+  <rect x="276" y="196" width="88" height="120" rx="12" fill="#9ccbff"/>
+  <path d="M320 217v78m-39-39h78" stroke="#123a5c" stroke-width="18" stroke-linecap="round"/>
+  <path d="M143 225h74m206 0h74" stroke="#155e9a" stroke-width="12" stroke-linecap="round"/>
+</svg>

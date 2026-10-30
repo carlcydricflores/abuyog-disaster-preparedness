@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">General incident illustration</title>
+  <desc id="desc">A general alert symbol with a calm response marker.</desc>
+  <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
+  <path d="m320 64 194 304H126z" fill="#dceeff" stroke="#155e9a" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M320 158v94" stroke="#123a5c" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="320" cy="300" r="13" fill="#123a5c"/>
+  <circle cx="500" cy="106" r="38" fill="#9ccbff" stroke="#123a5c" stroke-width="10"/>
+  <path d="m482 106 12 12 25-27" fill="none" stroke="#123a5c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

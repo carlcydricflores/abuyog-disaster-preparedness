@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Fire illustration</title>
+  <desc id="desc">A building outline with a flame and a clear safety perimeter.</desc>
+  <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
+  <path d="M116 354V162l135-82 135 82v192" fill="#fff" stroke="#155e9a" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M92 168 251 68l159 100" fill="none" stroke="#123a5c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M205 354v-95h92v95m-130-137h42m83 0h42" fill="none" stroke="#155e9a" stroke-width="12"/>
+  <path d="M472 324c-46-34-41-74-7-113 3 35 20 41 25 57 23-26 24-57 14-91 62 47 76 101 39 147-18 22-48 24-71 0Z" fill="#9ccbff" stroke="#123a5c" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M476 331h98" stroke="#155e9a" stroke-width="14" stroke-linecap="round"/>
+</svg>
