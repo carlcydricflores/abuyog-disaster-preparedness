@@ -4,6 +4,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import IncidentMedia from '@/Components/IncidentMedia';
 import Modal from '@/Components/Modal';
 import { Badge, Pager, btn, btnAlt, card, input } from '@/Components/ui';
+import IncidentLocation from '@/Components/IncidentLocation';
 
 type AlertDraft = {
   title: string;
@@ -155,6 +156,7 @@ export default function Incidents({ incidents, statuses, filters }: any) {
               )}
               <p className="leading-6 text-primary">{incident.description}</p>
               <IncidentMedia photoUrl={incident.photo_path ? route('incidents.photo', incident.id) : null} type={incident.type} barangay={incident.barangay} />
+              <IncidentLocation incident={incident} />
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <label className="sr-only" htmlFor={`review-status-${incident.id}`}>Status for report {incident.id}</label>
                 <select id={`review-status-${incident.id}`} className={`${input} max-w-[12rem]`} value={incident.status} onChange={(event) => selectStatus(incident, event.target.value)}>
