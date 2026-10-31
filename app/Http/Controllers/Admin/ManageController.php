@@ -62,14 +62,20 @@ class ManageController extends Controller
         return collect($cfg['fields'])->mapWithKeys(fn ($f) => [$f['name'] => $f['rule']])->all();
     }
 
-    public function index(string $resource)
+    public function index(Request $request, string $resource)
     {
         $cfg = $this->config($resource);
+        $editId = $resource === 'alerts' ? $request->integer('edit') : null;
+        $rows = $cfg['model']::query()
+            ->when($editId, fn ($query) => $query->orderByRaw('CASE WHEN id = ? THEN 0 ELSE 1 END', [$editId]))
+            ->latest()
+            ->paginate(15);
 
         return Inertia::render('Admin/Manage', [
             'resource' => $resource,
             'fields' => collect($cfg['fields'])->map(fn ($f) => collect($f)->except('rule'))->all(),
-            'rows' => $cfg['model']::latest()->paginate(15),
+            'rows' => $rows,
+            'editId' => $editId,
         ]);
     }
 

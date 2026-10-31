@@ -1,10 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
-  <title id="title">Landslide illustration</title>
-  <desc id="desc">A hillside with displaced earth and a blocked roadway.</desc>
+  <title id="title">Landslide safety illustration</title>
+  <desc id="desc">A blue-clad safety responder signals people to keep away from a slope with fallen debris.</desc>
   <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
-  <path d="M0 256 176 92l118 102 104-86 242 148v164H0z" fill="#9ccbff"/>
-  <path d="m0 282 176-164 94 82-90 114 66 106H0z" fill="#155e9a"/>
-  <path d="m197 222 68-22 61 39-41 31 56 34-65 30-58-42-66 16 28-45-49-25z" fill="#dceeff" stroke="#123a5c" stroke-width="10" stroke-linejoin="round"/>
-  <path d="M344 346h296" stroke="#123a5c" stroke-width="30"/>
-  <path d="M414 318v58m82-58v58m-102-36h122" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+  <rect x="38" y="34" width="282" height="58" rx="18" fill="#123a5c"/>
+  <text x="179" y="72" fill="#fff" font-family="sans-serif" font-size="20" font-weight="700" text-anchor="middle">KEEP CLEAR OF SLOPES</text>
+  <path d="M0 261 177 106l108 94 95-76 260 153v143H0z" fill="#9ccbff"/>
+  <path d="m0 285 177-155 87 76-81 111 59 107H0z" fill="#155e9a"/>
+  <path d="m201 248 47-34 47 29-34 31 45 26-55 27-48-36-54 15 23-38-37-23z" fill="#dceeff" stroke="#123a5c" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M0 378h390" stroke="#123a5c" stroke-width="21"/>
+  <path d="M322 354v48m54-48v48m-77-30h101" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="518" cy="154" r="28" fill="#eac4a4" stroke="#123a5c" stroke-width="7"/>
+  <path d="M488 149a30 30 0 0 1 60 0v5h-60z" fill="#155e9a" stroke="#123a5c" stroke-width="7"/>
+  <path d="M482 155h72" stroke="#123a5c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M509 163h5m13 0h5m-17 11q6 5 12 0" fill="none" stroke="#123a5c" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M486 192h64l18 111h-100z" fill="#155e9a" stroke="#123a5c" stroke-width="8"/>
+  <path d="m493 198 25 14 25-14m-61 43h65m-48 24h17v18h-17z" fill="none" stroke="#dceeff" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M488 216 445 179l-28-19m133 65 34-27m-69 109v74m-42 0h91" fill="none" stroke="#123a5c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m416 160-16-3m18 10-15 4" stroke="#123a5c" stroke-width="7" stroke-linecap="round"/>
+  <path d="M488 239h64" stroke="#dceeff" stroke-width="8"/>
 </svg>

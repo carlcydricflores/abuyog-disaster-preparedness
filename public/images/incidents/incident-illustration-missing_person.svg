@@ -1,10 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
-  <title id="title">Missing person illustration</title>
-  <desc id="desc">A neutral person symbol beside a search magnifier.</desc>
+  <title id="title">Missing person safety illustration</title>
+  <desc id="desc">A blue-clad safety responder asks people to share information through official local channels.</desc>
   <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
-  <circle cx="256" cy="144" r="58" fill="#9ccbff" stroke="#155e9a" stroke-width="12"/>
-  <path d="M146 342c7-79 47-120 110-120s103 41 110 120" fill="#fff" stroke="#155e9a" stroke-width="14" stroke-linecap="round"/>
-  <circle cx="418" cy="228" r="78" fill="#dceeff" stroke="#123a5c" stroke-width="14"/>
-  <path d="m474 284 71 71" stroke="#123a5c" stroke-width="20" stroke-linecap="round"/>
-  <path d="M405 201c12-21 45-15 45 9 0 18-27 21-27 42m0 22h.01" fill="none" stroke="#155e9a" stroke-width="12" stroke-linecap="round"/>
+  <rect x="38" y="34" width="250" height="58" rx="18" fill="#123a5c"/>
+  <text x="163" y="72" fill="#fff" font-family="sans-serif" font-size="20" font-weight="700" text-anchor="middle">SHARE INFORMATION</text>
+  <circle cx="202" cy="191" r="45" fill="#9ccbff" stroke="#155e9a" stroke-width="10"/>
+  <path d="M113 344c6-64 38-96 89-96s83 32 89 96" fill="#fff" stroke="#155e9a" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="347" cy="235" r="62" fill="#dceeff" stroke="#123a5c" stroke-width="11"/>
+  <path d="m391 279 51 52" stroke="#123a5c" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="522" cy="151" r="28" fill="#eac4a4" stroke="#123a5c" stroke-width="7"/>
+  <path d="M493 146a29 29 0 0 1 58 0v5h-58z" fill="#155e9a" stroke="#123a5c" stroke-width="7"/>
+  <path d="M487 152h70" stroke="#123a5c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M513 159h5m13 0h5m-17 10q6 5 12 0" fill="none" stroke="#123a5c" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M490 188h64l18 111h-101z" fill="#155e9a" stroke="#123a5c" stroke-width="8"/>
+  <path d="m497 194 25 14 25-14m-59 42h62m-46 24h16v18h-16z" fill="none" stroke="#dceeff" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M493 213 459 182l-17-23m112 55 31-24m-71 110v76m-41 0h93" fill="none" stroke="#123a5c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M493 232h64" stroke="#dceeff" stroke-width="8"/>
 </svg>

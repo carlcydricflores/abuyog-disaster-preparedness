@@ -13,7 +13,7 @@ class IncidentController extends Controller
     public function index(Request $r)
     {
         // Scoped to the logged-in user: nobody can read another person's report.
-        return Inertia::render('Incidents/Index', ['incidents' => $r->user()->incidents()->latest()->paginate(10)]);
+        return Inertia::render('Incidents/Index', ['incidents' => $r->user()->incidents()->with('alert:id,incident_id,is_published')->latest()->paginate(10)]);
     }
 
     public function create()
@@ -27,6 +27,7 @@ class IncidentController extends Controller
             'type' => 'required|in:'.implode(',', self::TYPES),
             'barangay' => 'required|string|max:100',
             'description' => 'required|string|min:10|max:2000',
+            'allow_name_publication' => 'nullable|boolean',
             'latitude' => 'nullable|numeric|between:-90,90',
             'longitude' => 'nullable|numeric|between:-180,180',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // real image check, 2 MB cap
@@ -37,6 +38,7 @@ class IncidentController extends Controller
             $data['photo_path'] = $r->file('photo')->store('incidents', 'local');
         }
         unset($data['photo']);
+        $data['allow_name_publication'] = $data['allow_name_publication'] ?? false;
 
         $r->user()->incidents()->create($data);
 

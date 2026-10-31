@@ -12,10 +12,13 @@ use App\Http\Controllers\PublicController;
 use App\Http\Middleware\EnsureAdmin;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\AlertPhotoController;
 
 // Public pages
 Route::get('/', [PublicController::class, 'home'])->name('home');
 Route::get('/alerts', [PublicController::class, 'alerts'])->name('alerts');
+Route::get('/alert-photos/{alert}/{index}', [AlertPhotoController::class, 'show'])
+    ->whereNumber('index')->middleware('throttle:120,1')->name('alerts.photo');
 Route::get('/evacuation-centers', [PublicController::class, 'centers'])->name('centers');
 Route::get('/hotlines', [PublicController::class, 'hotlines'])->name('hotlines');
 Route::get('/safety-guidelines', [PublicController::class, 'guidelines'])->name('guidelines');
@@ -44,6 +47,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', EnsureAdmin::class])
     Route::delete('manage/{resource}/{id}', [ManageController::class, 'destroy'])->name('manage.destroy');
 
     Route::get('incidents', [IncidentReviewController::class, 'index'])->name('incidents');
+    Route::post('incidents/{incident}/publish', [IncidentReviewController::class, 'publish'])->name('incidents.publish');
     Route::patch('incidents/{incident}', [IncidentReviewController::class, 'update'])->name('incidents.update');
 
     Route::get('reports', [ReportController::class, 'index'])->name('reports');

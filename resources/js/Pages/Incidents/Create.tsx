@@ -34,7 +34,7 @@ function loadGoogleMaps(apiKey: string): Promise<any> {
 }
 
 export default function Create({ types }: any) {
-  const { data, setData, post, processing, errors } = useForm<any>({ type: types[0], barangay: '', description: '', latitude: '', longitude: '', photo: null });
+  const { data, setData, post, processing, errors } = useForm<any>({ type: types[0], barangay: '', description: '', latitude: '', longitude: '', photo: null, allow_name_publication: false });
   const mapElement = useRef<HTMLDivElement>(null);
   const map = useRef<any>(null);
   const marker = useRef<any>(null);
@@ -126,6 +126,13 @@ export default function Create({ types }: any) {
           {(errors.latitude || errors.longitude) && <p className="mt-1 text-sm text-error">{errors.latitude || errors.longitude}</p>}
         </div>
         <div><label htmlFor="incident-photo" className="mb-1 block text-sm font-medium text-primary">Photo <span className="font-normal text-muted">(optional, JPG or PNG, max 2 MB)</span></label><input id="incident-photo" aria-invalid={Boolean(errors.photo)} aria-describedby={errors.photo ? 'photo-error' : undefined} type="file" accept="image/png,image/jpeg" onChange={(e) => setData('photo', e.target.files?.[0] ?? null)} className="block min-h-11 w-full text-sm text-secondary file:mr-4 file:min-h-11 file:rounded file:border-0 file:bg-surface-raised file:px-4 file:font-semibold file:text-primary hover:file:bg-surface-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus" />{err('photo')}</div>
+        <div className="rounded-2xl border border-subtle bg-surface-raised p-4">
+          <label htmlFor="incident-name-consent" className="flex cursor-pointer items-start gap-3 text-sm font-semibold text-primary">
+            <input id="incident-name-consent" type="checkbox" checked={data.allow_name_publication} onChange={(event) => setData('allow_name_publication', event.target.checked)} className="mt-0.5 size-5 shrink-0 rounded border-subtle accent-action focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus" />
+            <span>Allow my name to be shown if this report is published as a public alert.</span>
+          </label>
+          <p className="ml-8 mt-2 text-sm leading-5 text-secondary">If you leave this unchecked, the alert will say “Reported by a resident”. Your email, location coordinates, and photo are never included in the public alert.</p>
+        </div>
         <button disabled={processing} className={btn}>{processing ? 'Sending report…' : 'Send report'}</button>
       </form>
     </AppLayout>

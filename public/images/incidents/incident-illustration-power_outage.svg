@@ -1,9 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
-  <title id="title">Power outage illustration</title>
-  <desc id="desc">A utility pole and power lines with a lightning outage symbol.</desc>
+  <title id="title">Power outage safety illustration</title>
+  <desc id="desc">A blue-clad safety responder warns people to stay away from damaged electrical lines.</desc>
   <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
-  <path d="M156 138h328m-302 0-48 70m322-70 48 70M320 138v224" fill="none" stroke="#123a5c" stroke-width="14" stroke-linecap="round"/>
-  <path d="M278 362h84m-68-270h52m-86 46h120" stroke="#155e9a" stroke-width="12" stroke-linecap="round"/>
-  <path d="m370 188-58 72h42l-24 71 74-93h-45z" fill="#9ccbff" stroke="#123a5c" stroke-width="9" stroke-linejoin="round"/>
-  <path d="M56 138h98m330 0h100" stroke="#155e9a" stroke-width="10" stroke-linecap="round"/>
+  <rect x="38" y="34" width="274" height="58" rx="18" fill="#123a5c"/>
+  <text x="175" y="72" fill="#fff" font-family="sans-serif" font-size="20" font-weight="700" text-anchor="middle">STAY CLEAR OF LINES</text>
+  <path d="M74 163h268m-236 0-42 57m250-57 43 57M208 163v194" fill="none" stroke="#123a5c" stroke-width="12" stroke-linecap="round"/>
+  <path d="M174 357h68m-56-230h44m-79 36h113" stroke="#155e9a" stroke-width="10" stroke-linecap="round"/>
+  <path d="m266 220-43 55h32l-18 52 57-69h-35z" fill="#9ccbff" stroke="#123a5c" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M27 163h48m267 0h48" stroke="#155e9a" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="503" cy="153" r="28" fill="#eac4a4" stroke="#123a5c" stroke-width="7"/>
+  <path d="M474 148a29 29 0 0 1 58 0v5h-58z" fill="#155e9a" stroke="#123a5c" stroke-width="7"/>
+  <path d="M468 154h70" stroke="#123a5c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M494 161h5m13 0h5m-17 10q6 5 12 0" fill="none" stroke="#123a5c" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M471 190h64l18 109h-101z" fill="#155e9a" stroke="#123a5c" stroke-width="8"/>
+  <path d="m478 196 25 14 25-14m-59 42h62m-46 24h16v18h-16z" fill="none" stroke="#dceeff" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M474 216 441 180l-6-25m100 61 33-27m-69 110v76m-41 0h93" fill="none" stroke="#123a5c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M474 236h63" stroke="#dceeff" stroke-width="8"/>
 </svg>

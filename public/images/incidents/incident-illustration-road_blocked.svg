@@ -1,11 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
-  <title id="title">Blocked road illustration</title>
-  <desc id="desc">A road closed by a striped barrier and scattered debris.</desc>
+  <title id="title">Blocked road safety illustration</title>
+  <desc id="desc">A blue-clad safety responder holds a stop signal beside a blocked road.</desc>
   <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
-  <path d="M184 420 252 58h136l68 362" fill="#dceeff" stroke="#155e9a" stroke-width="12"/>
-  <path d="M320 92v56m0 46v56m0 46v42" stroke="#123a5c" stroke-width="12" stroke-linecap="round"/>
-  <path d="M130 213h380" stroke="#123a5c" stroke-width="22" stroke-linecap="round"/>
-  <path d="m170 213 28-20 28 20-28 20zm92 0 28-20 28 20-28 20zm92 0 28-20 28 20-28 20z" fill="#9ccbff"/>
-  <path d="M167 234v86m306-86v86" stroke="#155e9a" stroke-width="16" stroke-linecap="round"/>
-  <path d="m68 346 55-32 44 31-53 37zm366-3 49-41 75 37-41 30z" fill="#9ccbff" stroke="#155e9a" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="38" y="34" width="218" height="58" rx="18" fill="#123a5c"/>
+  <text x="147" y="72" fill="#fff" font-family="sans-serif" font-size="20" font-weight="700" text-anchor="middle">DO NOT CROSS</text>
+  <path d="M0 371h430M185 371l54-220h79l53 220" fill="#dceeff" stroke="#155e9a" stroke-width="9"/>
+  <path d="M261 202v36m0 39v36" stroke="#123a5c" stroke-width="10" stroke-linecap="round"/>
+  <path d="M41 315h343" stroke="#123a5c" stroke-width="17" stroke-linecap="round"/>
+  <path d="m73 315 24-16 24 16-24 16zm76 0 24-16 24 16-24 16zm76 0 24-16 24 16-24 16" fill="#9ccbff"/>
+  <circle cx="507" cy="151" r="28" fill="#eac4a4" stroke="#123a5c" stroke-width="7"/>
+  <path d="M478 146a29 29 0 0 1 58 0v5h-58z" fill="#155e9a" stroke="#123a5c" stroke-width="7"/>
+  <path d="M472 152h70" stroke="#123a5c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M498 159h5m13 0h5m-17 10q6 5 12 0" fill="none" stroke="#123a5c" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M475 188h64l18 111h-101z" fill="#155e9a" stroke="#123a5c" stroke-width="8"/>
+  <path d="m482 194 25 14 25-14m-59 42h62m-46 24h16v18h-16z" fill="none" stroke="#dceeff" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M478 214 446 180l-6-25m99 62 35 25m-71 57v77m-41 0h93" fill="none" stroke="#123a5c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M478 231h63" stroke="#dceeff" stroke-width="8"/>
 </svg>

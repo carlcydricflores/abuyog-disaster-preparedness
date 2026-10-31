@@ -1,10 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
-  <title id="title">Medical emergency illustration</title>
-  <desc id="desc">A first-aid case with a prominent medical cross.</desc>
+  <title id="title">Medical response illustration</title>
+  <desc id="desc">A blue-clad safety responder signals for medical help beside a first-aid kit.</desc>
   <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
-  <rect x="142" y="152" width="356" height="204" rx="28" fill="#fff" stroke="#155e9a" stroke-width="14"/>
-  <path d="M238 152v-28c0-23 19-42 42-42h80c23 0 42 19 42 42v28" fill="none" stroke="#123a5c" stroke-width="14"/>
-  <rect x="276" y="196" width="88" height="120" rx="12" fill="#9ccbff"/>
-  <path d="M320 217v78m-39-39h78" stroke="#123a5c" stroke-width="18" stroke-linecap="round"/>
-  <path d="M143 225h74m206 0h74" stroke="#155e9a" stroke-width="12" stroke-linecap="round"/>
+  <rect x="38" y="34" width="246" height="58" rx="18" fill="#123a5c"/>
+  <text x="161" y="72" fill="#fff" font-family="sans-serif" font-size="20" font-weight="700" text-anchor="middle">CALL FOR MEDICAL HELP</text>
+  <rect x="57" y="186" width="244" height="169" rx="24" fill="#fff" stroke="#155e9a" stroke-width="11"/>
+  <path d="M116 186v-21c0-19 16-35 35-35h56c19 0 35 16 35 35v21" fill="none" stroke="#123a5c" stroke-width="11"/>
+  <rect x="147" y="225" width="64" height="88" rx="9" fill="#9ccbff"/>
+  <path d="M179 241v56m-28-28h56" stroke="#123a5c" stroke-width="13" stroke-linecap="round"/>
+  <path d="M58 249h46m198 0h-34" stroke="#155e9a" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="495" cy="159" r="28" fill="#eac4a4" stroke="#123a5c" stroke-width="7"/>
+  <path d="M466 154a29 29 0 0 1 58 0v5h-58z" fill="#155e9a" stroke="#123a5c" stroke-width="7"/>
+  <path d="M460 160h70" stroke="#123a5c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M486 167h5m13 0h5m-17 10q6 5 12 0" fill="none" stroke="#123a5c" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M463 196h64l18 111h-101z" fill="#155e9a" stroke="#123a5c" stroke-width="8"/>
+  <path d="m470 202 25 14 25-14m-59 42h62m-46 24h16v18h-16z" fill="none" stroke="#dceeff" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M466 219 435 184l-5-29m94 64 34-26m-68 113v77m-41 0h92" fill="none" stroke="#123a5c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M466 239h63" stroke="#dceeff" stroke-width="8"/>
 </svg>

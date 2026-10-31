@@ -1,5 +1,5 @@
 import { Link, router, useForm } from '@inertiajs/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AppLayout from '@/Layouts/AppLayout';
 import { Pager, btn, btnAlt, card, input } from '@/Components/ui';
 
@@ -30,7 +30,7 @@ function parseGoogleMapsCoordinates(mapLink: string) {
 }
 
 /** Generic admin CRUD screen. The form is generated from the `fields` definition sent by ManageController. */
-export default function Manage({ resource, fields, rows }: any) {
+export default function Manage({ resource, fields, rows, editId: initialEditId }: any) {
   const blank = Object.fromEntries(fields.map((f: any) => [f.name, '']));
   if (resource === 'centers') blank.locationLink = '';
   const { data, setData, post, put, reset, errors, processing, clearErrors } = useForm<any>(blank);
@@ -53,6 +53,16 @@ export default function Manage({ resource, fields, rows }: any) {
     setData(rowData);
     setLocationMessage('');
   };
+
+  useEffect(() => {
+    if (initialEditId && resource === 'alerts') {
+      const alert = rows.data.find((row: any) => row.id === initialEditId);
+      if (alert) {
+        edit(alert);
+      }
+    }
+  }, [initialEditId]);
+
   const remove = (id: number) => confirm('Delete this item?') && router.delete(route('admin.manage.destroy', [resource, id]), { preserveScroll: true, onSuccess: () => setNotice('Item deleted.') });
 
   const updateLocationLink = (mapLink: string) => {
@@ -136,7 +146,7 @@ export default function Manage({ resource, fields, rows }: any) {
       </form>
       <div className="space-y-2">
         {rows.data.map((row: any) => (
-          <div key={row.id} className={`${card} flex items-center justify-between gap-4 py-3`}>
+          <div key={row.id} id={`manage-alert-${row.id}`} className={`${card} flex items-center justify-between gap-4 py-3`}>
             <div className="min-w-0"><div className="truncate font-semibold text-brand">{row[fields[0].name]}</div><div className="truncate text-sm text-muted">{fields.slice(1, 4).map((f: any) => row[f.name]).filter(Boolean).join(' · ')}</div></div>
             <div className="flex shrink-0 gap-3 text-sm"><button type="button" className="rounded-full px-3 py-2 font-semibold text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus" onClick={() => edit(row)}>Edit</button><button type="button" className="rounded-full px-3 py-2 font-semibold text-error focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-danger" onClick={() => remove(row.id)}>Delete</button></div>
           </div>

@@ -1,7 +1,9 @@
+import EmergencyCallButton from '@/Components/EmergencyCallButton';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { PropsWithChildren, useState } from 'react';
 import Logo from '@/Components/Logo';
 import AppSidebar, { useSidebarCollapsed } from '@/Components/AppSidebar';
+
 
 /** Site-wide shell: navigation adapts to guest / user / admin. (Role links are cosmetic; the server enforces RBAC.) */
 export default function AppLayout({ title, children }: PropsWithChildren<{ title: string }>) {
@@ -36,6 +38,9 @@ export default function AppLayout({ title, children }: PropsWithChildren<{ title
           In immediate danger? Call 911.
         </footer>
       </div>
+
+      {/* Floating "Call 911" shortcut, visible on every page */}
+      <EmergencyCallButton />
     </div>
   );
 }

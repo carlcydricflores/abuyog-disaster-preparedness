@@ -2,6 +2,7 @@ import { router } from '@inertiajs/react';
 import { useState } from 'react';
 import AppLayout from '@/Layouts/AppLayout';
 import { Badge, Pager, card, btn, input } from '@/Components/ui';
+import CenterLocation from '@/Components/CenterLocation';
 
 const statusStyle: any = { open: 'status-open', full: 'status-full', closed: 'status-closed' };
 
@@ -28,10 +29,8 @@ export default function Centers({ centers, filters }: any) {
               <p className="text-sm text-muted">{c.barangay}{c.address ? ` · ${c.address}` : ''}</p>
               <div role="progressbar" aria-label={`Shelter occupancy at ${c.name}`} aria-valuemin={0} aria-valuemax={c.capacity} aria-valuenow={Math.min(c.occupied, c.capacity)} aria-valuetext={`${pct}% occupied`} className="mt-4 h-2 rounded bg-occupancy-track"><div className="h-2 rounded bg-occupancy" style={{ width: `${pct}%` }} /></div>
               <p className="mt-1 text-sm text-secondary">{c.occupied} / {c.capacity} sheltered</p>
-              <div className="mt-3 flex gap-4 text-sm">
-                {c.latitude != null && c.longitude != null && <a className="rounded text-brand underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus" target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps?q=${c.latitude},${c.longitude}`}>Open in Maps</a>}
-                {c.contact && <span className="text-muted">Contact: {c.contact}</span>}
-              </div>
+              {c.contact && <p className="mt-2 text-sm text-muted">Contact: {c.contact}</p>}
+              <CenterLocation center={c} />
             </article>
           );
         })}

@@ -1,10 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
-  <title id="title">General incident illustration</title>
-  <desc id="desc">A general alert symbol with a calm response marker.</desc>
+  <title id="title">General incident safety illustration</title>
+  <desc id="desc">A blue-clad safety responder signals people to stay alert and follow local safety guidance.</desc>
   <rect width="640" height="420" rx="28" fill="#eaf3fc"/>
-  <path d="m320 64 194 304H126z" fill="#dceeff" stroke="#155e9a" stroke-width="16" stroke-linejoin="round"/>
-  <path d="M320 158v94" stroke="#123a5c" stroke-width="22" stroke-linecap="round"/>
-  <circle cx="320" cy="300" r="13" fill="#123a5c"/>
-  <circle cx="500" cy="106" r="38" fill="#9ccbff" stroke="#123a5c" stroke-width="10"/>
-  <path d="m482 106 12 12 25-27" fill="none" stroke="#123a5c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="38" y="34" width="190" height="58" rx="18" fill="#123a5c"/>
+  <text x="133" y="72" fill="#fff" font-family="sans-serif" font-size="20" font-weight="700" text-anchor="middle">STAY ALERT</text>
+  <path d="m208 195 62-97 62 97z" fill="#dceeff" stroke="#155e9a" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M270 132v31m0 16v.01" stroke="#123a5c" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="474" cy="151" r="28" fill="#eac4a4" stroke="#123a5c" stroke-width="7"/>
+  <path d="M445 146a29 29 0 0 1 58 0v5h-58z" fill="#155e9a" stroke="#123a5c" stroke-width="7"/>
+  <path d="M439 152h70" stroke="#123a5c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M465 159h5m13 0h5m-17 10q6 5 12 0" fill="none" stroke="#123a5c" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M442 188h64l18 111h-101z" fill="#155e9a" stroke="#123a5c" stroke-width="8"/>
+  <path d="m449 194 25 14 25-14m-59 42h62m-46 24h16v18h-16z" fill="none" stroke="#dceeff" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M445 213 406 180l-22 8m122 5 41-34m-72 110v76m-41 0h93" fill="none" stroke="#123a5c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M445 232h64" stroke="#dceeff" stroke-width="8"/>
+  <path d="M395 354h204" stroke="#155e9a" stroke-width="9" stroke-linecap="round"/>
 </svg>
